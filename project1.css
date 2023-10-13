@@ -1,0 +1,326 @@
+*{
+    margin:0;
+    padding: 0;
+}
+*body{
+    display: flex;
+    
+}
+#header_table{
+    display:flex;
+    width: 100%;
+    height:auto;
+    border:1px solid black;
+}
+tr{
+    display: flex;
+    width: 100%;
+    height:auto;
+    justify-content: center;
+}
+tr > th{
+    padding:3vh 0 3vh 0;
+
+}
+tr :nth-child(2){
+    /* padding:6vh; */
+    border:1px solid black;
+    width:40vw;
+    transition: ease-in 0.4s;
+}
+tr :nth-child(2):hover{
+    /* padding:6vh; */
+    background:black ;
+    color: lightgreen;
+}
+tr :nth-child(3):hover{
+    /* padding:6vh; */
+    background:black ;
+    color: lightgreen;
+}
+tr :nth-child(4):hover{
+    /* padding:6vh; */
+    background:black ;
+    color: lightgreen;
+}
+
+tr :nth-child(3),
+tr :nth-child(4),
+tr :nth-child(5) {
+    /* padding:6vh; */
+    border:1px solid black;
+    transition: ease-in 0.4s;
+    width:14.8vw;
+}
+tr :nth-child(1){
+    width:14.8vw;
+    background: rgb(181, 241, 121);
+}
+
+.title{
+    width: 100%;
+    height:60vh;
+    display:flex;
+    flex-direction: column;
+    background: white;
+    justify-content:center;
+    align-items:center;
+
+}
+.tshop{
+    font-size: 8vw;
+}
+#nerqevidiv {
+    display: none;
+    width: 23vw;
+    height: 3vw;
+    overflow: hidden;
+
+}
+.text{ 
+   display: flex;
+    font-size: 1.7vw;
+    justify-content: center;
+
+}
+#ThereIsOneforEveryone{
+    /* max-width:23vw; */
+    width: 23vw;
+    height: 2vw;
+    text-align: center;
+    justify-content: center;
+    background: rgb(192, 225, 91);
+    animation-duration: 7s;
+    animation-name: animation;
+    transition: transform  /* Add transition here if needed */;
+    animation: slide-in 2s linear;
+}
+@keyframes slide-in{
+    from{
+        transform:translateX(-100%)
+    }
+    to{
+        transform:translateX(0)
+    }
+}
+
+@keyframes animation {
+    0% {
+        width: 1vw;
+        /* height: 3vw; */
+        position: relative;
+    }
+    100% {
+        width: 23vw;
+        /* height:3vw; */
+        position: relative;
+    }
+    
+
+
+    
+}
+
+   
+
+.ShopNewShopWomenShopMen{
+    display: flex;
+    width: 100%;
+    height:70vh;
+    justify-content: space-between ;
+}
+
+#shopwomen{
+    width: 24%;
+    background: url("https://static.wixstatic.com/media/c837a6_412c6d4e5a8f49f1bd70c5a9f60bd99d~mv2.jpg/v1/fill/w_312,h_449,q_90/c837a6_412c6d4e5a8f49f1bd70c5a9f60bd99d~mv2.webp");
+}
+#shopwomen:hover{
+    background: linear-gradient(rgba(92, 170, 92, 0.1), rgb(188, 218, 38)), url("https://static.wixstatic.com/media/c837a6_412c6d4e5a8f49f1bd70c5a9f60bd99d~mv2.jpg/v1/fill/w_312,h_449,q_90/c837a6_412c6d4e5a8f49f1bd70c5a9f60bd99d~mv2.webp");
+    ;   
+
+
+}
+#hiddentitle{
+    text-align:center;
+    padding: 65vh 0 0 0
+}
+#shopwomen:hover #hiddentitle {
+    display: block;
+}
+
+
+#shopmen{
+    width: 24%;
+    background: url("https://static.wixstatic.com/media/c837a6_3a03706bd90e4f289e7aed0d2f11c992~mv2.jpg/v1/fill/w_312,h_449,q_90/c837a6_3a03706bd90e4f289e7aed0d2f11c992~mv2.webp")
+}
+#shopmen:hover{
+    width: 24%;
+    background: linear-gradient(rgba(92, 170, 92, 0.1), rgb(188, 218, 38)),url("https://static.wixstatic.com/media/c837a6_3a03706bd90e4f289e7aed0d2f11c992~mv2.jpg/v1/fill/w_312,h_449,q_90/c837a6_3a03706bd90e4f289e7aed0d2f11c992~mv2.webp")
+}
+#hiddentitlemen{
+    display:none;
+    text-align:center;
+    padding: 65vh 0 0 0
+}
+#shopmen:hover #hiddentitlemen {
+    display: block;
+}
+#shopnew{
+    width:49%;
+    background: url("https://static.wixstatic.com/media/c837a6_3e8310c6d6474d42a3e2925a1f4ed3a3~mv2.jpg/v1/fill/w_635,h_449,fp_0.5_0.43,q_90/c837a6_3e8310c6d6474d42a3e2925a1f4ed3a3~mv2.webp");
+}
+#hiddentitlenew{
+    display:none;
+    text-align:center;
+    padding: 65vh 0 0 0
+}
+#shopnew:hover #hiddentitlenew{
+    display:block
+
+}
+
+#shopnew:hover{
+    width:49%;
+    background: linear-gradient(rgba(92, 170, 92, 0.1), rgb(188, 218, 38)),url("https://static.wixstatic.com/media/c837a6_3e8310c6d6474d42a3e2925a1f4ed3a3~mv2.jpg/v1/fill/w_635,h_449,fp_0.5_0.43,q_90/c837a6_3e8310c6d6474d42a3e2925a1f4ed3a3~mv2.webp");
+
+}
+#hiddentitle{
+    display: none;
+}
+
+.NewDrops{
+    width: 100%;
+    height:15vw;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 7vw;
+
+}
+
+#products{
+    width:100%;
+    height:50vw;
+    background: rgb(186, 227, 37);
+}
+
+.btnshopnew{
+    width:100%;
+    height:17vw;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+}
+#btnshopnew{
+    background: black;
+    font-size: 1.5em;
+    color:rgb(189, 233, 69);
+    width:15vw;
+    height:7vh;
+}
+#btnshopnew:hover{
+    background: rgb(208, 234, 9);
+    font-size: 1.5em;
+    color:rgb(0, 1, 0);
+    width:15vw;
+    height:7vh;
+    cursor:;
+
+}
+
+.sale{
+    display:flex;
+    width:100%;
+    height:92vh;
+}
+#sale{
+    display:flex;
+    width:60%;
+    height:92vh;
+    background:linear-gradient(rgba(167, 210, 57, 0.1), rgb(188, 218, 38))
+    
+
+
+}
+.girl{
+    display:flex;
+    width:40%;
+    height:auto;
+    background: url("https://static.wixstatic.com/media/c837a6_2749f733af59407699862291aaef4b44~mv2.jpg/v1/fill/w_512,h_725,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c837a6_2749f733af59407699862291aaef4b44~mv2.jpg");
+
+}
+
+#sale{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#textaboutsale{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    height:90vh;
+    width:80%;
+
+}
+#kaytsak{
+    font-size:4em;
+
+}
+#saleinon{
+    font-size: 2em;
+}
+#off{
+    font-size:7em;
+}
+#littleoff{
+    font-size:1em;
+}
+
+
+#getoff{
+    display:flex;
+    width:100%;
+    height:30vh;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+#slaqdzakh{
+font-size:10em;
+animation:slide 2s linear;
+}
+@keyframes slide {
+    from{
+       transform: translateX(-100%);
+    }
+    to{
+       transform: translateX(0);
+    }
+    
+}
+
+#getoff10{
+    font-size:2.5em;
+
+}
+#slaqaj{
+    font-size:10em;
+    animation:slide-right 2s linear ;
+}
+@keyframes slide-right {
+    from{
+        transform:translateX(100%)
+        
+    }
+    to{
+        transform:translateX(0)
+
+    }
+    
+}
