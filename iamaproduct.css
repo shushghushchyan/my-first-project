@@ -1,0 +1,240 @@
+*{
+    margin:0;
+    padding: 0;
+}
+*body{
+    display: flex;
+    
+}
+#containeriamaproduct{
+    display: flex;
+    z-index: 1;
+
+}
+#header_table{
+    display:flex;
+    width: 100%;
+    height:auto;
+    border:1px solid black;
+}
+tr{
+    display: flex;
+    width: 100%;
+    height:auto;
+    justify-content: center;
+}
+tr > th{
+    padding:3vh 0 3vh 0;
+
+}
+tr :nth-child(2){
+    /* padding:6vh; */
+    border:1px solid black;
+    width:40vw;
+    transition: ease-in 0.3s;
+}
+tr :nth-child(2):hover a{
+    /* padding:6vh; */
+    background:black ;
+    color: lightgreen;
+    transition: ease-in 0.3s;
+
+}
+tr :nth-child(3):hover a{
+    /* padding:6vh; */
+    background:black ;
+    color: lightgreen;
+    transition: ease-in 0.3s;
+
+}
+tr :nth-child(4):hover a{
+    /* padding:6vh; */
+    background:black ;
+    color: lightgreen;
+    transition: ease-in 0.3s;
+
+}
+tr :nth-child(3):hover,
+tr :nth-child(4):hover {
+    background: black;
+    border:1px solid black;
+    width:14.8vw;
+    transition: 0.2s;
+}
+
+
+tr :nth-child(3),
+tr :nth-child(4),
+tr :nth-child(5) {
+    /* padding:6vh; */
+    border:1px solid black;
+    width:14.8vw;
+}
+tr :nth-child(1){
+    width:14.8vw;
+    /* background: rgb(181, 241, 121); */
+}
+#th_header1{
+    background: rgb(181, 241, 121);
+}
+#transparent{
+    display:flex;
+    width:100%;
+    height: auto;
+    background: rgb(2, 2, 2, 0.3);
+
+}
+#numbers{
+    width: 5vw;
+    height:7vh;
+    appearance: none;
+    border:1px solid black;
+}
+
+#conteinerforoneproduct{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    height:auto;
+    align-items: center;
+}
+#verevidiv{
+    display:flex;
+    width:80%;
+    height:25vh;
+    align-items: center;
+    justify-content: space-between;
+}
+#nerqevidiv2{
+    display:flex;
+    width:70%;
+    height:auto;
+}
+#imgproduct{
+    display:flex;
+    flex-direction: column;
+    width:60%;
+    height: 130vh;
+    align-items: center;
+}
+#img {
+    border: 1px solid black;
+    width: 100%; 
+    height: 100%; 
+    background-size: cover;
+  }
+#litleimg{
+    width:90%;
+    height:15vh;
+    justify-content: center;
+    align-items: center;
+
+}
+#description{
+    width:90%;
+    height:30vh;
+}
+
+#aboutproduct{
+    display:flex;
+    width:40%;
+    height:110vh;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: space-around;
+    margin: 0 0 0 2vw;
+}
+#title_iamaproduct{
+    font-size:2em
+
+}
+
+
+#addtocart{
+    width:20vw;
+    height:10vh;
+    background: black;
+    color:greenyellow;
+    font-size:1em;
+}
+#return{
+    width:80%;
+    height:auto;
+    padding: 5vh;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+
+}
+#shipping{
+    width:80%;
+    height:auto;
+    padding: 5vh;
+}
+
+#cartSidebar{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top:0;
+    display: flex;
+    width:28vw;
+    height:100%;
+    background: rgb(253, 253, 253);
+    transition: right 0.5s;
+    z-index: 2;
+}
+.hidden{
+    right:-500px;
+}
+#cart{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height:18%;
+    background:#CFFF2D;
+    font-size: 2em;
+    font-weight:300;
+}
+#namecart{
+    margin-right:11.5vw;
+}
+#selectedproduct{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 52%;
+overflow-y: auto;
+}
+#subtotalPrice{
+display: flex;
+flex-direction: column;
+height:10%;
+}
+
+#viewcartdiv{
+    display: flex;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+
+}
+#btnViewCart{
+    background: black;
+    color:#A5CF27;
+    width: 80%;
+    height: auto;
+    padding: 1vw;
+}
+#closecartSidebar{
+    background: none;
+    border: none;
+    padding: 0;
+    font:inherit;
+    cursor: pointer;
+    margin-left:1vw;
+
+}
+

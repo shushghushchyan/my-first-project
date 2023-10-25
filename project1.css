@@ -4,9 +4,6 @@
 }
 .container{
     display:flex;
-    flex-direction: column;
-    width:100%;
-    height: auto;
 }
 #header_table{
     display:flex;
@@ -24,6 +21,28 @@ tr > th{
     padding:3vh 0 3vh 0;
 
 }
+tr :nth-child(2):hover a{
+    /* padding:6vh; */
+    background:black ;
+    color: lightgreen;
+    transition: ease-in 0.3s;
+
+}
+
+tr :nth-child(3):hover a{
+    /* padding:6vh; */
+    background:black ;
+    color: lightgreen;
+    transition: ease-in 0.3s;
+
+}
+tr :nth-child(4):hover a{
+    /* padding:6vh; */
+    background:black ;
+    color: lightgreen;
+    transition: ease-in 0.3s;
+
+}
 tr :nth-child(2){
     /* padding:6vh; */
     border:1px solid black;
@@ -35,40 +54,49 @@ tr :nth-child(2):hover{
     background:black ;
     color: lightgreen;
 }
-tr :nth-child(3):hover{
+tr :nth-child(4):hover a{
     /* padding:6vh; */
     background:black ;
     color: lightgreen;
+    transition: ease-in 0.3s;
+
 }
-tr :nth-child(4):hover{
-    /* padding:6vh; */
-    background:black ;
-    color: lightgreen;
+tr :nth-child(3):hover,
+tr :nth-child(4):hover {
+    background: black;
+    border:1px solid black;
+    width:14.8vw;
+    transition: 0.2s;
 }
+
 
 tr :nth-child(3),
 tr :nth-child(4),
 tr :nth-child(5) {
-    /* padding:6vh; */
     border:1px solid black;
-    transition: ease-in 0.4s;
     width:14.8vw;
 }
 tr :nth-child(1){
     width:14.8vw;
+    /* background: rgb(181, 241, 121); */
+}
+#th_header1{
     background: rgb(181, 241, 121);
 }
-
+#a{
+    text-decoration: none;
+}
 .title{
     width: 100%;
-    height:45vh;
+    height:40vh;
     display:flex;
     flex-direction: column;
     background: white;
     justify-content:center;
     align-items:center;
-
 }
+
+
 .tshop{
     font-size: 6vw;
 }
@@ -86,7 +114,6 @@ tr :nth-child(1){
 
 }
 #ThereIsOneforEveryone{
-    /* max-width:23vw; */
     width: 23vw;
     height: 2vw;
     text-align: center;
@@ -94,7 +121,7 @@ tr :nth-child(1){
     background: rgb(192, 225, 91);
     animation-duration: 7s;
     animation-name: animation;
-    transition: transform  /* Add transition here if needed */;
+    transition: transform;
     animation: slide-in 2s linear;
 }
 @keyframes slide-in{
@@ -109,12 +136,12 @@ tr :nth-child(1){
 @keyframes animation {
     0% {
         width: 1vw;
-        height: 3vw;
+        height: 2vw;
         position: relative;
     }
     100% {
         width: 23vw;
-        height:3vw;
+        height:2vw;
         position: relative;
     }
     
@@ -444,6 +471,11 @@ a:active{
     align-items: center;
     /* background: rgb(235, 236, 231); */
 }
+#img1{
+    width: 18vw;
+    height:48vh;
+    background-size: cover;
+}
 .productclass{
     display:flex;
     flex-direction: column;
@@ -462,12 +494,3 @@ width:10vw;
 height:10vh;
 margin-top:2vh;
 }
-/* 
-#titleproduct{
-
-
-}
-
-#priceproduct{
-
-} */
