@@ -8,8 +8,9 @@
 }
 #containeriamaproduct{
     display: flex;
+}
+#conteinerforoneproduct{
     z-index: 1;
-
 }
 #header_table{
     display:flex;
@@ -76,13 +77,6 @@ tr :nth-child(1){
 }
 #th_header1{
     background: rgb(181, 241, 121);
-}
-#transparent{
-    display:flex;
-    width:100%;
-    height: auto;
-    background: rgb(2, 2, 2, 0.3);
-
 }
 #numbers{
     width: 5vw;
@@ -171,56 +165,37 @@ tr :nth-child(1){
     padding: 5vh;
 }
 
-#cartSidebar{
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top:0;
-    display: flex;
-    width:28vw;
-    height:100%;
-    background: rgb(253, 253, 253);
-    transition: right 0.5s;
-    z-index: 2;
-}
 .hidden{
     right:-500px;
 }
-#cart{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height:18%;
-    background:#CFFF2D;
-    font-size: 2em;
-    font-weight:300;
-}
 #namecart{
     margin-right:11.5vw;
+    font-size:1em;
 }
-#selectedproduct{
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-width: 100%;
-height: 52%;
-overflow-y: auto;
-}
+ #selectedProduct {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    overflow-y: scroll;
+
+  } 
+
 #subtotalPrice{
 display: flex;
 flex-direction: column;
 height:10%;
 }
 
-#viewcartdiv{
+/* #viewcartdiv{
     display: flex;
     height: 20%;
     justify-content: center;
     align-items: center;
-
-}
+    
+} */
 #btnViewCart{
     background: black;
     color:#A5CF27;
@@ -235,6 +210,103 @@ height:10%;
     font:inherit;
     cursor: pointer;
     margin-left:1vw;
-
+    
+}
+#transparent{
+    display:flex;
+    width:100%;
+    height: 800vh;
+    position: fixed;
+    top:0;
+    background: rgb(45, 44, 44,0.4);
+    visibility: hidden;
+    
+}
+#cartSidebar{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top:0;
+    display: flex;
+    width:28vw;
+    height:100%;
+    background: rgb(253, 253, 253);
+    transition:  2s;
+    overflow-y: scroll;
 }
 
+
+#cart{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height:13%;
+    background:#CFFF2D;
+    font-size: 2em;
+    font-weight:300;
+}
+#scrollProduct{
+    display:flex;
+    flex-direction: column;
+    width:90%;
+    height:auto;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+#scrollOneProduct{
+    display:flex;
+    width:95%;
+    height:20vh;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    /* align-items: center; */
+    justify-content: center;
+    background: #CFFF2D;
+    overflow: hidden;
+}
+#selectImg{
+    width:33%;
+    height:auto;
+}
+
+#selectPriceMrice{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background: #A5CF27;
+    width:33%;
+    height:auto;
+
+}
+#selectPrice{
+    width:35%;
+    height:auto;
+
+}
+#selectclose{
+    width:33%;
+    height:auto;
+    text-align: end;
+    padding-right:1vh;
+    cursor: pointer;
+}
+#selectNumber{
+    width:1.5vw;
+    height: auto;
+    border: none;
+}
+#plusminus{
+    display:flex;
+    width:4vw;
+    height:2vw;
+    border: 1px solid black;
+    justify-content: space-around;
+}
+.btnplusminus{
+    border: none;
+    background: none;
+}

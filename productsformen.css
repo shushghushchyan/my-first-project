@@ -4,6 +4,7 @@
 }
 .container{
     display:flex;
+  
 }
 #header_table{
     display:flex;
@@ -483,10 +484,6 @@ a:active{
     /* background-image: var(--url); */
     margin: 1vh 2vw 1vh 2vh;
     justify-content: center;
-}
-
-.productclass:hover {
-    background-image: var(--url);
 }
 
 
