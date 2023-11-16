@@ -206,47 +206,28 @@ const productData = [
 }
 
 ]
-const cart = [];
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const addToCartFunction = (fragmentIdentifier) => {
-    const inputquantity = document.getElementById("numbers")
-    const storage = JSON.parse(localStorage.getItem("cart"))
+    const productId = parseInt(fragmentIdentifier);
+    const inputQuantity = document.getElementById("numbers");
+    const product = productData.find((product) => product.id === productId);
 
-    if(storage){
-        const product = productData.find((product) => parseInt(fragmentIdentifier) === product.id)
-        const existingItem = storage.find((a) => a.id === product.id)
-            if (existingItem) {
-                localStorage.removeItem("cart")
-                existingItem.quantity += parseInt(inputquantity.value)
-                console.log('IF SSSSSS', storage);
-                cart.push(...storage);
-                localStorage.setItem("cart", JSON.stringify(cart))
-            } else {
-                product.quantity = parseInt(inputquantity.value)
-                cart.push(...storage, product);
-                localStorage.setItem("cart", JSON.stringify(cart))
-            }
-         
-                
+    if (product) {
+        product.quantity = parseInt(inputQuantity.value);
 
-            console.log("ATCF SETITEM SOTRAGE: ", storage)
-            return storage
-            
-    }else {
-        const product = productData.find((product) => parseInt(fragmentIdentifier) === product.id)
-        product.quantity = parseInt(inputquantity.value)
-        cart.push(product);
-        console.log("cart after push: ", cart);
-        localStorage.setItem("cart", JSON.stringify(cart))
+        const existingProduct = cart.find((elementAlreadyInCart) => elementAlreadyInCart.id === product.id);
+
+        if (existingProduct) {
+            existingProduct.quantity += product.quantity;
+        } else {
+            cart.push(product);
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        console.log("Cart:", cart);
     }
-
-}
-
-
-
-
-
-
+};
 
 const textaboutsale = document.getElementById("textaboutsale")
 if(textaboutsale){
@@ -287,6 +268,7 @@ else{
 
 
 const fragmentIdentifier = window.location.hash.slice(1); 
+console.log("kjkjbhkjkjhkjh", fragmentIdentifier)
 
 
 const displayProduct = (filter) => {
@@ -318,8 +300,7 @@ const displayProduct = (filter) => {
            
             imgElement.style.transition = 'transform 0.5s ease';
             imgElement.style.transform = 'scale(1)';
-            imgElement.style.cursor = "zoom-in"
-            ;
+            imgElement.style.cursor = "zoom-in";
 
 
         });
@@ -361,7 +342,7 @@ const iamproductimg = document.getElementById("img")
 const displayOneProduct = (filter) => {
     const img = document.getElementById('img')
     img.style.background = `url(${productData[filter - 1].url})`;
-    img.style.backgroundSize = 'cover'; // Set background size to cover
+    img.style.backgroundSize = 'cover'; 
 
     const sku = document.getElementById("sku");
     const price = document.getElementById("price");
@@ -392,130 +373,196 @@ const numbers = document.getElementById("numbers");
 
 
 addToCart.addEventListener("click", () => {
+    addToCartFunction(fragmentIdentifier);
 
-    addToCartFunction(fragmentIdentifier)
-
-    
     const storage = JSON.parse(localStorage.getItem("cart"));
     cartSideBar.classList.remove("hidden");
     transparent.style.visibility = "visible";
     cartSideBar.style.right = "0";
     console.log(storage);
 
+    const selectedProduct = document.getElementById("selectedProduct");
+    selectedProduct.innerHTML = ""; // Очистить существующее содержимое
+    
+    const subtotalPrice = document.createElement("div");
+    subtotalPrice.setAttribute("id","subtotalPrice");
+    cartSideBar.appendChild(subtotalPrice);
+
+    const subtotal = document.createElement("div");
+    subtotal.setAttribute("id", "subtotal");
+    subtotal.innerHTML = "SUBTOTAL";
+    subtotalPrice.appendChild(subtotal);
+
+   const subprice = document.createElement("div")
+   subprice.setAttribute("id", "subprice")
+   
+
+    subtotalPrice.appendChild(subprice);
 
     storage.forEach((storageIndex) => {
-        console.log('ooo');
-        const cartSideBar = document.getElementById("cartSidebar");
+        console.log('storageIndex: ', storageIndex);
 
-        const selectedProduct = document.getElementById("selectedProduct");
         const scrollProduct = document.createElement("div");
-        scrollProduct.setAttribute("id", "scrollProduct");
-        selectedProduct.appendChild(scrollProduct);
+        scrollProduct.setAttribute("class", "scrollproduct");
 
         const scrollOneProduct = document.createElement("div");
-        scrollOneProduct.setAttribute("id", "scrollOneProduct");
-        scrollProduct.appendChild(scrollOneProduct);
+        scrollOneProduct.setAttribute("class", "scrollOneProduct");
 
         const selectImg = document.createElement("div");
-        selectImg.setAttribute("id", "selectImg");
-        scrollOneProduct.appendChild(selectImg);
+        selectImg.setAttribute("class", "selectImg");
+        selectImg.style.background = `url(${storageIndex.url})`;
+        selectImg.style.backgroundSize = "cover";
 
-
-        const selectPriceMrice =document.createElement("div");
-        selectPriceMrice.setAttribute("id", "selectPriceMrice");
-        scrollOneProduct.appendChild(selectPriceMrice);
+        const selectPriceMrice = document.createElement("div");
+        selectPriceMrice.setAttribute("class", "selectPriceMrice");
 
         const selectclose = document.createElement("div");
-        selectclose.setAttribute("id","selectclose");
-        selectclose.innerHTML = "X"
-        scrollOneProduct.appendChild(selectclose);
-
-
-        const selectIamaproduct =document.createElement("div");
-        selectIamaproduct.setAttribute("id", "selectIamaproduct");
-        selectPriceMrice.appendChild(selectIamaproduct);
-        selectIamaproduct.innerHTML = "I'm a product"
-
+        selectclose.setAttribute("class", "selectclose");
+        selectclose.innerHTML = "X";
+        selectclose.addEventListener("click", () => {
+            const productIndexToRemove = cart.findIndex(product => product.id === storageIndex.id);
+        
+            if (productIndexToRemove !== -1) {
+                cart.splice(productIndexToRemove, 1);
+                
+                localStorage.setItem("cart", JSON.stringify(cart));
+            }
+        
+            scrollProduct.remove();
+        });
+        
+        const selectIamaproduct = document.createElement("div");
+        selectIamaproduct.setAttribute("class", "selectIamaproduct");
+        selectIamaproduct.innerHTML = "I'm a product";
 
         const selectPrice = document.createElement("div");
-        selectPrice.setAttribute("id", "selectPrice");
-        selectPriceMrice.appendChild(selectPrice);
-
+        selectPrice.setAttribute("class", "selectPrice");
+        selectPrice.innerHTML = `${storageIndex.price}$`;
 
         const plusminus = document.createElement("div");
-        plusminus.setAttribute("id", "plusminus");
-        selectPriceMrice.appendChild(plusminus);
-        
+        plusminus.setAttribute("class", "plusminus");
+
         const plus = document.createElement("button");
-        plus.setAttribute("id","plus");
-        plus.setAttribute("class","btnplusminus");
-        plus.innerHTML = "+"
-        plusminus.appendChild(plus);
+        plus.setAttribute("class", "plus btnplusminus");
+        plus.innerHTML = "+";
+        plus.addEventListener("click", () => {
+            const currentValue = parseInt(selectNumber.value);
+            selectNumber.value = currentValue + 1;
+            const plusproduct = cart.find(plusproduct => plusproduct.id === storageIndex.id);
+
+if (plusproduct) {
+    plusproduct.quantity += 1;
+
+    const totalSum = cart.reduce((accumulator, item) => {
+        return accumulator + calculateBazmapatkum(item);
+    }, 0);
+
+    subprice.innerHTML = `(${totalSum}$)`;
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+
+    console.log("Updated Quantity:", plusproduct.quantity);
+} else {
+    console.log("Product not found in the cart");
+}
+
+        });
 
         const selectNumber = document.createElement("input");
-        selectNumber.setAttribute("id","selectNumber");
-        plusminus.appendChild(selectNumber);
+        selectNumber.setAttribute("class", "selectNumber");
+        selectNumber.value = storageIndex.quantity;
+
+        
+        const bazmapatkum = parseInt(selectNumber.value) * parseInt(selectPrice.innerHTML);
+        
+        const calculateBazmapatkum = (item) => {
+            return parseInt(item.quantity) * parseInt(item.price);
+        };
+
+        const totalSum = cart.reduce((accumulator, item) => {
+            return accumulator + calculateBazmapatkum(item);
+        }, 0);
+
+        subprice.innerHTML = `(${totalSum}$)`
+
+        console.log("Total bazmapatkum:", totalSum);
+
+                
+        
+
 
         const minus = document.createElement("button");
-        minus.setAttribute("id","minus");
-        minus.setAttribute("class","btnplusminus");
-        minus.innerHTML= "-"
+        minus.setAttribute("class", "minus btnplusminus");
+        minus.innerHTML = "-";
+        minus.addEventListener("click", () => {
+            const currentValue = parseInt(selectNumber.value);
+            selectNumber.value = currentValue - 1;
+      const minusproduct = cart.find(minusproduct => minusproduct.id === storageIndex.id);
+    
+    if (minusproduct) {
+        // Increment the quantity value
+        minusproduct.quantity -= 1;
+
+        const totalSum = cart.reduce((accumulator, item) => {
+            return accumulator + calculateBazmapatkum(item);
+        }, 0);
+
+        subprice.innerHTML = `(${totalSum}$)`;
+    
+        localStorage.setItem("cart", JSON.stringify(cart));
+    
+    
+        } else {
+        console.log("Product not found in the cart");
+    }
+        });
+
+        selectedProduct.appendChild(scrollProduct);
+        scrollProduct.appendChild(scrollOneProduct);
+        scrollOneProduct.appendChild(selectImg);
+        scrollOneProduct.appendChild(selectPriceMrice);
+        scrollOneProduct.appendChild(selectclose);
+        selectPriceMrice.appendChild(selectIamaproduct);
+        selectPriceMrice.appendChild(selectPrice);
+        selectPriceMrice.appendChild(plusminus);
+        plusminus.appendChild(plus);
+        plusminus.appendChild(selectNumber);
         plusminus.appendChild(minus);
 
-        if (fragmentIdentifier == storageIndex.id) {
-            console.log('STORAGEINDEX IF: ', storageIndex.price);
-                    selectImg.style.background = `url(${storageIndex.url})`;
-                    selectImg.style.backgroundSize = "cover";
-                    selectPrice.innerHTML = `${storageIndex.price}$`;
-                    selectNumber.value = storageIndex.quantity; 
-                    const X =+ storageIndex.price * selectNumber.value
-                    console.log("X", X)
-                    
-                    plus.addEventListener("click", () => {
-                    const currentValue = parseInt(selectNumber.value);
-                    selectNumber.value = currentValue + 1;
-                });
 
-                      
-                minus.addEventListener("click", () => {
-                    const currentValue = parseInt(selectNumber.value);
-                    selectNumber.value = currentValue - 1;
-                });
-                
 
-         }
-
-              
-        
-}
-)
-
+       
+    });
 });
-const subtotalPrice = document.createElement("div");
-subtotalPrice.setAttribute("id","subtotalPrice");
-cartSideBar.appendChild(subtotalPrice);
 
-const subtotal = document.createElement("div");
-subtotal.setAttribute("id", "subtotal");
-subtotal.innerHTML = "SUBTOTAL";
-subtotalPrice.appendChild(subtotal);
 
-const price = document.createElement("div");
-price.setAttribute("id", "subtotal");
-price.innerHTML = "$"
-subtotalPrice.appendChild(price);
 
 const btnViewCart = document.createElement("button");
 btnViewCart.setAttribute("id","btnViewCart");
 cartSideBar.appendChild(btnViewCart);
-btnViewCart.innerHTML = "VIEW CART"
+const ahref = document.createElement("a");
+   ahref.setAttribute("href", "viewcart.html");
+   ahref.setAttribute("id", "ahref")
+   ahref.innerHTML = "VIEW CART";
+   btnViewCart.appendChild(ahref);
+ 
+
+const closecartSideBar = document.getElementById("closecartSidebar");
+
+closecartSideBar.addEventListener("click", () => {
+    
+    transparent.style.visibility = "hidden";
+    cartSideBar.style.right = "-500px";
 
 
-//  transparent.addEventListener("click", () => {
-//     cartSideBar.classList= "hidden";
-//     cartSideBar.style.left = "-400px";
+});
+// transparent.addEventListener("click", () => {
 //     transparent.style.visibility = "hidden";
-// },);
+//     cartSideBar.style.right = "-500px";
+// })
+
+
 
 
 const mycartproduct = document.getElementById("mycartproduct");
@@ -523,6 +570,7 @@ const viewcartclose = document.getElementById("viewcartclose");
 if(mycartproduct || viewcartclose){
     viewcartclose.addEventListener("click", () => {
         mycartproduct.style.display  = "none";
+        
      })
 
 }

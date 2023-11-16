@@ -172,14 +172,14 @@ tr :nth-child(1){
     margin-right:11.5vw;
     font-size:1em;
 }
- #selectedProduct {
+ .selectedProduct {
     width: 100%;
     height: 40vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center; 
-    overflow-y: scroll;
+    overflow-y: auto;
 
   } 
 
@@ -197,11 +197,16 @@ height:10%;
     
 } */
 #btnViewCart{
-    background: black;
-    color:#A5CF27;
+    background: rgb(4, 4, 4);
+    color:#b3df30;
     width: 80%;
     height: auto;
     padding: 1vw;
+    align-self:center;
+    margin: 2vh;
+}
+#ahref{
+    color: #b3df30;
 }
 #closecartSidebar{
     background: none;
@@ -220,6 +225,7 @@ height:10%;
     top:0;
     background: rgb(45, 44, 44,0.4);
     visibility: hidden;
+    z-index: 1;
     
 }
 #cartSidebar{
@@ -231,8 +237,9 @@ height:10%;
     width:28vw;
     height:100%;
     background: rgb(253, 253, 253);
-    transition:  2s;
+    transition:  1s;
     overflow-y: scroll;
+    z-index: 2;
 }
 
 
@@ -256,7 +263,7 @@ height:10%;
     
 
 }
-#scrollOneProduct{
+.scrollOneProduct{
     display:flex;
     width:95%;
     height:20vh;
@@ -264,20 +271,18 @@ height:10%;
     border-bottom: 1px solid black;
     /* align-items: center; */
     justify-content: center;
-    background: #CFFF2D;
     overflow: hidden;
 }
-#selectImg{
+.selectImg{
     width:33%;
     height:auto;
 }
 
-#selectPriceMrice{
+.selectPriceMrice{
     display:flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background: #A5CF27;
     width:33%;
     height:auto;
 
@@ -287,19 +292,19 @@ height:10%;
     height:auto;
 
 }
-#selectclose{
+.selectclose{
     width:33%;
     height:auto;
     text-align: end;
     padding-right:1vh;
     cursor: pointer;
 }
-#selectNumber{
+.selectNumber{
     width:1.5vw;
     height: auto;
     border: none;
 }
-#plusminus{
+.plusminus{
     display:flex;
     width:4vw;
     height:2vw;
