@@ -229,48 +229,46 @@ const addToCartFunction = (fragmentIdentifier) => {
     }
 };
 
-const textaboutsale = document.getElementById("textaboutsale")
-if(textaboutsale){
-AOS.init();
+const textaboutsale = document.getElementById("textaboutsale");
+if (textaboutsale) {
+    AOS.init();
 }
+
+
 
 const ThereIsOneforEveryone = document.getElementById("nerqevidiv");
 
 if (ThereIsOneforEveryone) {
-    window.onload = function() {
-        setTimeout(function() {
+    window.onload = function () {
+        setTimeout(function () {
             ThereIsOneforEveryone.style.display = "block";
-            
-        }, 1000); 
+        }, 1000);
     };
-    
 }
+
 
 const element = document.getElementById("getoff") || null;
 
-if(element !==null){
+if (element !== null) {
+    window.addEventListener('scroll', function () {
+        const elementposition = element.getBoundingClientRect().top;
+        const screenposition = window.innerHeight;
 
-window.addEventListener ('scroll', function()   {
-const elementposition = element.getBoundingClientRect().top;
-const screenposition = window.innerHeight;
+        if (elementposition < screenposition) {
+            slaqdzakh.style.animation = 'slide 2s linear';
+            slaqaj.style.animation = 'slide-right 2s linear';
+        } else {
+            slaqdzakh.style.animation = 'paused';
+            slaqaj.style.animation = 'paused';
+        }
+    });
+}
 
-if(elementposition<screenposition){
-    slaqdzakh.style.animation = 'slide 2s linear';
-    slaqaj.style.animation = 'slide-right 2s linear';
-}
-else{
-    slaqdzakh.style.animation = 'paused'  
-    slaqaj.style.animation = 'paused' 
- }
-}
-)
-}
 
 
 const fragmentIdentifier = window.location.hash.slice(1); 
-console.log("kjkjbhkjkjhkjh", fragmentIdentifier)
 
-
+if(fragmentIdentifier){
 const displayProduct = (filter) => {
     productData.filter((el) => el.tag.includes(filter)).forEach((item, index) => {
         
@@ -311,7 +309,7 @@ const displayProduct = (filter) => {
             imgElement.addEventListener("mouseleave", () => imgElement.src = item.url);
         }      
 
-       
+
 
         const boxfortitlesndprice = document.createElement("div")
         boxfortitlesndprice.setAttribute("id","boxfortitlesndprice")
@@ -354,7 +352,10 @@ const displayOneProduct = (filter) => {
     info.innerHTML = `${productData[filter-1].info}`
     descript.innerHTML = `${productData[filter-1].descript}`
 
+
 }
+
+
 
 
 // productData[fragmentIdentifier - 1]
@@ -424,12 +425,18 @@ addToCart.addEventListener("click", () => {
         
             if (productIndexToRemove !== -1) {
                 cart.splice(productIndexToRemove, 1);
-                
+                const totalSum = cart.reduce((accumulator, item) => {
+                    return accumulator + calculateBazmapatkum(item);
+                }, 0);
+        
+                subprice.innerHTML = `(${totalSum}$)`;
+        
                 localStorage.setItem("cart", JSON.stringify(cart));
             }
         
-            scrollProduct.remove();
+            scrollProduct.remove(); 
         });
+        
         
         const selectIamaproduct = document.createElement("div");
         selectIamaproduct.setAttribute("class", "selectIamaproduct");
@@ -557,20 +564,100 @@ closecartSideBar.addEventListener("click", () => {
 
 
 });
+}
 // transparent.addEventListener("click", () => {
 //     transparent.style.visibility = "hidden";
 //     cartSideBar.style.right = "-500px";
 // })
 
+if (window.location.href.includes('viewcart.html')) {
+    // Код, специфичный для page2.html
 
 
+const viewcartleft = document.getElementById("viewcartleft");
 
-const mycartproduct = document.getElementById("mycartproduct");
-const viewcartclose = document.getElementById("viewcartclose");
-if(mycartproduct || viewcartclose){
+cart.forEach((element) => {
+    const myCartProduct = document.createElement("div");
+    myCartProduct.setAttribute("id", "myCartProduct");
+    viewcartleft.appendChild(myCartProduct);
+
+    const imgviewcart = document.createElement("img");
+    imgviewcart.setAttribute("id", "imgviewcart");
+    imgviewcart.style.backgroundImage= `url(${element.url })`
+    myCartProduct.appendChild(imgviewcart);
+
+
+    const pricemrice = document.createElement("div");
+    pricemrice.setAttribute("id", "pricemrice");
+    myCartProduct.appendChild(pricemrice);
+
+    const viewcartiamaProduct = document.createElement("div");
+    viewcartiamaProduct.setAttribute("id", "viewcartiamaProduct");
+    viewcartiamaProduct.innerHTML = "I'm a poroduct"
+    pricemrice.appendChild(viewcartiamaProduct);
+
+    const viewcartprice = document.createElement("div");
+    viewcartprice.setAttribute("id", "viewcartprice");
+    viewcartprice.innerHTML = (`${element.price}$`)
+    pricemrice.appendChild(viewcartprice);
+
+    
+    const viewcartQuantity = document.createElement("div");
+    viewcartQuantity.setAttribute("id", "viewcartQuantity");
+    myCartProduct.appendChild(viewcartQuantity);
+
+    const plusminus = document.createElement("div");
+    plusminus.setAttribute("id", "plusminus");
+    viewcartQuantity.appendChild(plusminus);
+    
+    const plus = document.createElement("button");
+    plus.setAttribute("id", "plus");
+    plus.setAttribute("class", "btnplusminus");
+    plus.innerHTML = "+"
+    plusminus.appendChild(plus);
+
+    const selectNumber = document.createElement("input");
+    selectNumber.setAttribute("id", "selectNumber"); 
+    selectNumber.value = parseInt(element.quantity)
+    plusminus.appendChild(selectNumber);
+    
+    const minus = document.createElement("button");
+    minus.setAttribute("id", "minus");
+    minus.setAttribute("class", "btnplusminus");
+    minus.innerHTML = "-"
+    plusminus.appendChild(minus);
+    
+
+    const secondprice = document.createElement("div");
+    secondprice.setAttribute("id", "secondprice");
+    secondprice.innerHTML = (`${parseInt(element.quantity) * parseInt(element.price)}$`);
+    myCartProduct.appendChild(secondprice);
+
+    const viewcartclose = document.createElement("div");
+    viewcartclose.innerHTML = "X"
     viewcartclose.addEventListener("click", () => {
-        mycartproduct.style.display  = "none";
+        myCartProduct.style.display = "none";
+        cart.remove(element)
         
-     })
+    })
+    myCartProduct.appendChild(viewcartclose);
 
+    
+
+});
+const promoCode = document.getElementById("promoCode");
+viewcartleft.appendChild(promoCode);
+
+const addAnote = document.getElementById("addAnote");
+viewcartleft.appendChild(addAnote);
+
+const lastsubPrice = document.getElementById("lastsubPrice");
+const lastsum = cart.reduce((accumulator, product) => {
+    return accumulator + (product.price * product.quantity);
+}, 0);
+
+lastsubPrice.innerHTML = lastsum + "$";
 }
+
+const localElement = document.getElementById("local");
+localElement.innerHTML = "Armenia"
