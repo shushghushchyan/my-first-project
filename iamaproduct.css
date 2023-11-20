@@ -12,71 +12,63 @@
 #conteinerforoneproduct{
     z-index: 1;
 }
-#header_table{
-    display:flex;
-    width: 100%;
-    height:auto;
-    border:1px solid black;
-}
-tr{
+table{
     display: flex;
-    width: 100%;
-    height:auto;
+    width:100%;
+    height:12vh;
+    font-size: 1.2em;
+    align-items: center;
+}
+tbody{
+    display: flex;
+    width:100%;
     justify-content: center;
+
+}
+
+#headerTr{
+    display:flex;
+    width:98%;
+    justify-content: space-between;
+    justify-content: center;
+
+
 }
 tr > th{
     padding:3vh 0 3vh 0;
+}
+#th_header1 {
+    width: 30%;
+    background:rgb(82, 110, 16) ;
+    color: yellowgreen;
+}
 
+#th_header2,
+#th_header3,
+#th_header4 {
+    background: rgba(200, 224, 93, 0.5);
+    width: 20%;
 }
-tr :nth-child(2){
-    /* padding:6vh; */
-    border:1px solid black;
-    width:40vw;
-    transition: ease-in 0.3s;
+.aTh:visited{
+    color: rgb(122, 201, 37);
 }
-tr :nth-child(2):hover a{
-    /* padding:6vh; */
-    background:black ;
-    color: lightgreen;
-    transition: ease-in 0.3s;
-
-}
-tr :nth-child(3):hover a{
-    /* padding:6vh; */
-    background:black ;
-    color: lightgreen;
-    transition: ease-in 0.3s;
-
-}
-tr :nth-child(4):hover a{
-    /* padding:6vh; */
-    background:black ;
-    color: lightgreen;
-    transition: ease-in 0.3s;
-
-}
-tr :nth-child(3):hover,
-tr :nth-child(4):hover {
+#th_header2:hover,
+#th_header3:hover,
+#th_header4:hover {
     background: black;
-    border:1px solid black;
-    width:14.8vw;
-    transition: 0.2s;
+    color: rgb(49, 60, 32); /* Set the desired text color */
 }
 
-
-tr :nth-child(3),
-tr :nth-child(4),
-tr :nth-child(5) {
-    /* padding:6vh; */
-    border:1px solid black;
-    width:14.8vw;
+#th_header5{
+    width:10%;
+    background: rgb(49, 60, 32);
+    color: rgb(28, 87, 13);
 }
-tr :nth-child(1){
-    width:14.8vw;
-    /* background: rgb(181, 241, 121); */
-}
-#th_header1{
-    background: rgb(181, 241, 121);
+#th_header6 {
+    width:10%;
+    background:rgb(56, 68, 3) ;
+    color:rgb(202, 235, 145);
+    font-size: 1.8em;
 }
 #numbers{
     width: 5vw;
@@ -216,6 +208,7 @@ height:auto;
     cursor: pointer;
     margin-left:1vw;
     
+    
 }
 #transparent{
     display:flex;
@@ -232,10 +225,10 @@ height:auto;
     display: flex;
     flex-direction: column;
     position: fixed;
-    top:0;
+    top:51px;
     display: flex;
     width:28vw;
-    height:100%;
+    height:95%;
     background: rgb(253, 253, 253);
     transition:  1s;
     overflow-y: scroll;
@@ -314,4 +307,17 @@ height:auto;
 .btnplusminus{
     border: none;
     background: none;
+}
+.basket{
+    width: 2vw;
+    height: 5vh;
+    cursor: pointer;
+}
+#basketPoint{
+    width: 20px;
+    height: 20px;
+    border-radius: 45%;
+    background-color: rgb(244, 71, 71);
+    margin: -52px 14px 8px 68px;
+    z-index: 2;
 }

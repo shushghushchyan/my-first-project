@@ -206,6 +206,7 @@ const productData = [
 }
 
 ]
+
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const addToCartFunction = (fragmentIdentifier) => {
@@ -341,7 +342,7 @@ const displayOneProduct = (filter) => {
     const img = document.getElementById('img')
     img.style.background = `url(${productData[filter - 1].url})`;
     img.style.backgroundSize = 'cover'; 
-
+    
     const sku = document.getElementById("sku");
     const price = document.getElementById("price");
     const info = document.getElementById("productdetail")
@@ -356,11 +357,11 @@ const displayOneProduct = (filter) => {
 }
 
 
-
+console.log(typeof fragmentIdentifier);
 
 // productData[fragmentIdentifier - 1]
+if (isNaN(parseInt(fragmentIdentifier)) === false) displayOneProduct(fragmentIdentifier)
 
-displayOneProduct(fragmentIdentifier)
 
 
 const addToCart = document.getElementById("addtocart");
@@ -372,7 +373,7 @@ const numbers = document.getElementById("numbers");
 
 
 
-
+if(addToCart){
 addToCart.addEventListener("click", () => {
     addToCartFunction(fragmentIdentifier);
 
@@ -400,8 +401,17 @@ addToCart.addEventListener("click", () => {
 
     subtotalPrice.appendChild(subprice);
 
+
+
+    const basketPoint = document.getElementById("basketPoint");
+
     storage.forEach((storageIndex) => {
         console.log('storageIndex: ', storageIndex);
+        basketPoint.innerHTML = storage.length;
+        basketPoint.style.color = "white";
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+
 
         const scrollProduct = document.createElement("div");
         scrollProduct.setAttribute("class", "scrollproduct");
@@ -428,7 +438,8 @@ addToCart.addEventListener("click", () => {
                 const totalSum = cart.reduce((accumulator, item) => {
                     return accumulator + calculateBazmapatkum(item);
                 }, 0);
-        
+                basketPoint.innerHTML = cart.length;
+
                 subprice.innerHTML = `(${totalSum}$)`;
         
                 localStorage.setItem("cart", JSON.stringify(cart));
@@ -436,7 +447,7 @@ addToCart.addEventListener("click", () => {
         
             scrollProduct.remove(); 
         });
-        
+    
         
         const selectIamaproduct = document.createElement("div");
         selectIamaproduct.setAttribute("class", "selectIamaproduct");
@@ -475,6 +486,7 @@ if (plusproduct) {
 }
 
         });
+    
 
         const selectNumber = document.createElement("input");
         selectNumber.setAttribute("class", "selectNumber");
@@ -495,7 +507,8 @@ if (plusproduct) {
 
         console.log("Total bazmapatkum:", totalSum);
 
-                
+        basketPoint.innerHTML = storage.length;
+
         
 
 
@@ -507,8 +520,7 @@ if (plusproduct) {
             selectNumber.value = currentValue - 1;
       const minusproduct = cart.find(minusproduct => minusproduct.id === storageIndex.id);
     
-    if (minusproduct) {
-        // Increment the quantity value
+    if (minusproduct && minusproduct.quantity > 0) {
         minusproduct.quantity -= 1;
 
         const totalSum = cart.reduce((accumulator, item) => {
@@ -542,7 +554,7 @@ if (plusproduct) {
        
     });
 });
-
+}
 
 
 const btnViewCart = document.createElement("button");
@@ -553,7 +565,12 @@ const ahref = document.createElement("a");
    ahref.setAttribute("id", "ahref")
    ahref.innerHTML = "VIEW CART";
    btnViewCart.appendChild(ahref);
- 
+
+ btnViewCart.addEventListener("click", () => {
+    basketPoint.innerHTML = storage.length;
+    basketPoint.style.color = "white";
+    localStorage.setItem("cart", JSON.stringify(cart));
+ })
 
 const closecartSideBar = document.getElementById("closecartSidebar");
 
@@ -565,10 +582,7 @@ closecartSideBar.addEventListener("click", () => {
 
 });
 }
-// transparent.addEventListener("click", () => {
-//     transparent.style.visibility = "hidden";
-//     cartSideBar.style.right = "-500px";
-// })
+
 
 if (window.location.href.includes('viewcart.html')) {
     // Код, специфичный для page2.html
@@ -615,6 +629,32 @@ cart.forEach((element) => {
     plus.setAttribute("class", "btnplusminus");
     plus.innerHTML = "+"
     plusminus.appendChild(plus);
+    plus.addEventListener("click", () => {
+    const pluselement = cart.find(item => item.id === element.id);
+
+    if (pluselement && pluselement.quantity >=0) {
+        pluselement.quantity += 1;
+
+        const currentValue = parseInt(selectNumber.value);
+        selectNumber.value = currentValue + 1;
+
+        const calculateBazmapatkumValue = calculateBazmapatkum(pluselement);
+        secondprice.innerHTML = calculateBazmapatkumValue + "$";
+
+        const sumsumik = cart.reduce((accumulator, item) => {
+            return accumulator + calculateBazmapatkum(item);
+        }, 0);
+
+        console.log("total", sumsumik);
+        lastsubPrice.innerHTML = `(${sumsumik}$)`;
+        totalsumik.innerHTML = `(${sumsumik}$)`;
+
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+    } else {
+        console.log("Product not found in the cart or quantity is already 0.");
+    }
+});
 
     const selectNumber = document.createElement("input");
     selectNumber.setAttribute("id", "selectNumber"); 
@@ -626,6 +666,39 @@ cart.forEach((element) => {
     minus.setAttribute("class", "btnplusminus");
     minus.innerHTML = "-"
     plusminus.appendChild(minus);
+
+function calculateBazmapatkum(item) {
+    return item.quantity * parseInt(item.price);
+}
+
+minus.addEventListener("click", () => {
+    const minuselement = cart.find(item => item.id === element.id);
+
+    if (minuselement && minuselement.quantity > 0) {
+        minuselement.quantity -= 1;
+
+        const currentValue = parseInt(selectNumber.value);
+        selectNumber.value = currentValue - 1;
+
+        const calculateBazmapatkumValue = calculateBazmapatkum(minuselement);
+        secondprice.innerHTML = calculateBazmapatkumValue + "$";
+
+        const sumsumik = cart.reduce((accumulator, item) => {
+            return accumulator + calculateBazmapatkum(item);
+        }, 0);
+
+        console.log("total", sumsumik);
+
+        lastsubPrice.innerHTML = `(${sumsumik}$)`;
+        totalsumik.innerHTML = `(${sumsumik}$)`;
+
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+    } else {
+        console.log("Product not found in the cart or quantity is already 0.");
+    }
+});
+
     
 
     const secondprice = document.createElement("div");
@@ -634,12 +707,32 @@ cart.forEach((element) => {
     myCartProduct.appendChild(secondprice);
 
     const viewcartclose = document.createElement("div");
+    viewcartclose.setAttribute("id", "viewcartclose")
     viewcartclose.innerHTML = "X"
+    console.log("before", cart)
     viewcartclose.addEventListener("click", () => {
         myCartProduct.style.display = "none";
-        cart.remove(element)
         
-    })
+    
+        const slicethisindex = cart.findIndex(item => item.id === element.id);
+    
+        if (slicethisindex !== -1) {
+            cart.splice(slicethisindex, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            basketPoint.innerHTML = cart.length;
+
+            const sumsumik = cart.reduce((accumulator, item) => {
+                return accumulator + calculateBazmapatkum(item);
+            }, 0);
+            lastsubPrice.innerHTML = `(${sumsumik}$)`;
+            totalsumik.innerHTML = `(${sumsumik}$)`;
+            localStorage.setItem("cart", JSON.stringify(cart));
+
+        } else {
+            console.log("Element not found in the cart.");
+        }
+    });
+    
     myCartProduct.appendChild(viewcartclose);
 
     
@@ -660,4 +753,37 @@ lastsubPrice.innerHTML = lastsum + "$";
 }
 
 const localElement = document.getElementById("local");
-localElement.innerHTML = "Armenia"
+if(localElement){
+localElement.innerHTML = "Armenia"}
+
+const checkout = document.getElementById("checkout");  
+const modalwondow = document.getElementById("modalwondow");
+const transparentviewcart = document.getElementById("transparentviewcart");
+if(checkout){
+checkout.addEventListener("click", () => {
+    modalwondow.style.display = "block";
+    transparentviewcart.style.display = "block"
+})
+}
+transparentviewcart?.addEventListener("click", () => {
+    modalwondow.style.display = "none";
+    modalwondow.style.top = "200px";
+    transparentviewcart.style.display = "none";
+})
+
+
+
+
+const baskets = document.getElementsByClassName("basket");
+
+for (const basket of baskets) {
+    basket.addEventListener("click", () => {
+        window.location.href = "viewcart.html";
+        basketPoint.innerHTML = cart.length;
+
+    });
+}
+    
+const totalsumik = document.getElementById("totalprice");
+totalsumik.innerHTML = lastsubPrice.innerHTML ;
+
