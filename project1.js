@@ -558,6 +558,14 @@ if (plusproduct) {
 
 
 const btnViewCart = document.createElement("button");
+const basketPoint = document.getElementById("basketPoint");
+btnViewCart.addEventListener("click", function () {
+
+basketPoint.innerHTML = storage.length;
+basketPoint.style.color = "white";
+});
+
+
 btnViewCart.setAttribute("id","btnViewCart");
 cartSideBar.appendChild(btnViewCart);
 const ahref = document.createElement("a");
@@ -565,12 +573,21 @@ const ahref = document.createElement("a");
    ahref.setAttribute("id", "ahref")
    ahref.innerHTML = "VIEW CART";
    btnViewCart.appendChild(ahref);
+   
+document.addEventListener('DOMContentLoaded', function() {
+    const basketPoint = document.getElementById("basketPoint");
 
- btnViewCart.addEventListener("click", () => {
-    basketPoint.innerHTML = storage.length;
-    basketPoint.style.color = "white";
-    localStorage.setItem("cart", JSON.stringify(cart));
- })
+    // Получаем данные корзины из localStorage
+    const storedCartData = JSON.parse(localStorage.getItem("cart"));
+
+    if (storedCartData) {
+        // Предполагаем, что storedCartData - это массив
+        basketPoint.innerText = storedCartData.length;
+        basketPoint.style.color = "white";
+    }
+});
+
+
 
 const closecartSideBar = document.getElementById("closecartSidebar");
 
@@ -770,6 +787,18 @@ transparentviewcart?.addEventListener("click", () => {
     modalwondow.style.top = "200px";
     transparentviewcart.style.display = "none";
 })
+document.addEventListener('DOMContentLoaded', function() {
+    const basketPoint = document.getElementById("basketPoint");
+
+    // Получаем данные корзины из localStorage
+    const storedCartData = JSON.parse(localStorage.getItem("cart"));
+
+    if (storedCartData) {
+        // Предполагаем, что storedCartData - это массив
+        basketPoint.innerText = storedCartData.length;
+        basketPoint.style.color = "white";
+    }
+});
 
 
 
