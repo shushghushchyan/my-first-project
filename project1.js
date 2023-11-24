@@ -404,6 +404,8 @@ addToCart.addEventListener("click", () => {
 
 
     const basketPoint = document.getElementById("basketPoint");
+    const basketPointSecond = document.getElementById("basketPointSecond");
+    
 
     storage.forEach((storageIndex) => {
         console.log('storageIndex: ', storageIndex);
@@ -411,6 +413,9 @@ addToCart.addEventListener("click", () => {
         basketPoint.style.color = "white";
         localStorage.setItem("cart", JSON.stringify(cart));
 
+       basketPointSecond.innerHTML = storage.length;
+       basketPointSecond.style.color = "white";
+        localStorage.setItem("cart", JSON.stringify(cart));
 
 
         const scrollProduct = document.createElement("div");
@@ -439,6 +444,7 @@ addToCart.addEventListener("click", () => {
                     return accumulator + calculateBazmapatkum(item);
                 }, 0);
                 basketPoint.innerHTML = cart.length;
+                basketPointSecond.innerHTML = cart.length;
 
                 subprice.innerHTML = `(${totalSum}$)`;
         
@@ -508,6 +514,7 @@ if (plusproduct) {
         console.log("Total bazmapatkum:", totalSum);
 
         basketPoint.innerHTML = storage.length;
+        basketPointSecond.innerHTML = storage.length;
 
         
 
@@ -559,6 +566,7 @@ if (plusproduct) {
 
 const btnViewCart = document.createElement("button");
 const basketPoint = document.getElementById("basketPoint");
+const basketPointSecond = document.getElementById("basketPointSecond");
 btnViewCart.addEventListener("click", function () {
 
 basketPoint.innerHTML = storage.length;
@@ -576,6 +584,7 @@ const ahref = document.createElement("a");
    
 document.addEventListener('DOMContentLoaded', function() {
     const basketPoint = document.getElementById("basketPoint");
+    const basketPointSecond = document.getElementById("basketPointSecond");
 
     // Получаем данные корзины из localStorage
     const storedCartData = JSON.parse(localStorage.getItem("cart"));
@@ -584,6 +593,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Предполагаем, что storedCartData - это массив
         basketPoint.innerText = storedCartData.length;
         basketPoint.style.color = "white";
+        basketPointSecond.innerText = storedCartData.length;
+        basketPointSecond.style.color = "white";
     }
 });
 
@@ -802,7 +813,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
 const baskets = document.getElementsByClassName("basket");
 
 for (const basket of baskets) {
@@ -813,6 +823,45 @@ for (const basket of baskets) {
     });
 }
     
+
+
+const burger = document.getElementById("burger");
+const modalWindowforBurger = document.getElementById("modalWindowforBurger");
+
+let modalVisible = false;
+
+if (burger && modalWindowforBurger) {
+    modalWindowforBurger.style.display = "none";  // Set initial display to none
+
+    burger.addEventListener("click", () => {
+        if (window.innerWidth <= 270) {
+            console.log("Small screen detected. Handle accordingly.");
+        } else {
+            if (modalVisible) {
+                modalWindowforBurger.style.display = "none";
+            } else {
+                modalWindowforBurger.style.display = "flex";
+                modalWindowforBurger.style.flexDirection = "column";
+                modalWindowforBurger.style.width = "280px";
+                modalWindowforBurger.style.height = "350px";
+                modalWindowforBurger.style.justifyContent = "space-between";
+                modalWindowforBurger.style.alignItems = "center";
+                modalWindowforBurger.style.fontSize = "2.2em"
+            }
+
+            modalVisible = !modalVisible;
+        }
+    });
+}
+
+
+
+
+
+
+
+
+
+const lastsubPrice = document.getElementById("lastsubPrice")
 const totalsumik = document.getElementById("totalprice");
 totalsumik.innerHTML = lastsubPrice.innerHTML ;
-

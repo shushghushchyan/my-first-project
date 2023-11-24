@@ -474,7 +474,7 @@ margin-top:2vh;
 }
 #img1{
     width: 18vw;
-    height:48vh;
+    height:42vh;
     background-size: cover;
 }
 .basket{
@@ -504,3 +504,298 @@ margin-top:2vh;
     margin: -52px 14px 8px 68px;
     z-index: 2;
 }
+@media (min-width: 330px){
+    #galaxyfoldheader{
+        display:none;
+        
+    }
+    #modalWindowforBurger{
+        display: none;
+    }
+}
+
+@media(max-width: 320px){ 
+    table{
+        display: none;
+  }
+  
+#galaxyfoldheader{
+    display: flex;
+    width:100%;
+    height:12vh;
+    background: yellow;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#tshop{
+width:50%;
+height:12;
+font-size:1.3em;
+}
+#basket{
+width:15%;
+font-size:2em;
+}
+#basketPointSecond {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(244, 71, 71);
+    margin: -49px 0 23px 26px;
+    z-index: 2;
+    
+}
+#burger{
+    width:15%;
+    height:10vh;
+    font-size:2em;
+  
+}
+.title{
+    width: 100%;
+    height:20vh;
+    display:flex;
+    flex-direction: column;
+    background: white;
+    justify-content:center;
+    align-items:center;
+    
+}
+.tshop{
+    font-size: 4em;
+
+}
+#nerqevidiv{
+    display: none;
+    width: 76vw;
+    height: auto;
+    overflow: hidden;
+}
+#ThereIsOneforEveryone{
+    width: 76vw;
+    height: 3vh;
+    text-align: center;
+    justify-content: center;
+    background: rgb(192, 225, 91);
+    animation-duration: 7s;
+    animation-name: animation;
+    transition: transform;
+    animation: slide-in 2s linear;
+}
+.text{
+    display: flex;
+    font-size: 1em;
+    justify-content: center;
+}
+
+
+.ShopNewShopWomenShopMen {
+    display: flex; 
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    overflow-x: scroll;
+}
+
+#shopwomen {
+    width: 100%;
+    height: 50vh;
+}
+
+#shopmen {
+    width: 100%;
+    height: 50vh;
+}
+
+#shopnew {
+    width: 100%;
+    height: 50vh;
+}
+.productclass{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    height:60vh;
+    margin:1vh 2vw 1vh 2vh;
+    justify-content: center;
+
+}
+#products{
+    display:flex;
+    flex-wrap:wrap;
+    width:100%;
+    height:auto;
+    justify-content: center;
+    align-items: center;
+}
+#img1{
+    width: 90%;
+    background-size: cover;
+}
+#boxfortitlesndprice{
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    width:40vw;
+    height:5vh;
+    margin-top:1vh;
+    }
+    #btnshopnew{
+        background: black;
+        font-size: 1.5em;
+        color:rgb(189, 233, 69);
+        width:45vw;
+        height:7vh;
+    }
+
+.sale{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height:50%;
+}
+#textaboutsale{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    height:40vh;
+    width:100%;
+
+}
+#sale{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height:50%;
+    background:linear-gradient(rgba(167, 210, 57, 0.1), rgb(188, 218, 38))
+    
+
+
+}
+.girl{
+    display:flex;
+    width:100%;
+    height:50%;
+    background: url("https://static.wixstatic.com/media/c837a6_2749f733af59407699862291aaef4b44~mv2.jpg/v1/fill/w_512,h_725,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c837a6_2749f733af59407699862291aaef4b44~mv2.jpg");
+
+}
+#off{
+    font-size:2em;
+    text-align: center;
+}
+#littleoff{
+    font-size:1.1em;
+    text-align: center;
+}
+#getoff{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height:30vh;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+#getoff10{
+    font-size:1em;
+
+}
+#slaqdzakh {
+    font-size: 3em;
+    animation: slideDown 2s linear;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+}
+
+#slaqaj {
+    font-size: 3em;
+    animation: slideUp 2s linear;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}
+#footer{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height:auto;
+    justify-content: space-around;
+    border:1px solid black;
+    font-size: 1.2em;
+}
+#topshop{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    height:30vh;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    justify-content: space-around;
+    color:white
+}
+#shop{
+    display:flex;
+    flex-direction:column;
+    width: 100%;
+    height:30vh;
+    justify-content: center;
+    align-items: center;
+}
+.shopourstore{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+}
+    
+#ourstore{
+    display:flex;
+    flex-direction:column;
+    width: 100%;
+    height:30vh;
+    /* justify-content: center; */
+   align-items: center;
+
+}
+#TermsConditions{
+    display:flex;
+    justify-content:center;
+    width:100%;
+    height:30vh;
+align-items: center;
+}
+#footer2-1-1{
+    font-size: 1em;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    width:80%;
+    height:12vh;
+    justify-content:space-around;
+    
+
+
+}
+.tshop{
+    font-size: 1.5em;
+    text-align: center;
+}
+
+    }
