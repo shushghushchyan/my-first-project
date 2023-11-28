@@ -2,6 +2,7 @@
 *{
     margin:0;
     padding: 0;
+    font-family: 'Rubik', sans-serif;
 }
 
 table{
@@ -65,7 +66,7 @@ tr > th{
 
 .title{
     width: 100%;
-    height:40vh;
+    height:20vh;
     display:flex;
     flex-direction: column;
     background: white;
@@ -527,6 +528,7 @@ margin-top:2vh;
     align-items: center;
 }
 
+
 #tshop{
 width:50%;
 height:12;
@@ -544,6 +546,9 @@ font-size:2em;
     margin: -49px 0 23px 26px;
     z-index: 2;
     
+}
+#modalWindowforBurger{
+    height: 554px;
 }
 #burger{
     width:15%;
@@ -792,5 +797,76 @@ align-items: center;
 
 
 }
-
+}
+@media(max-width: 1024px) and (min-width:321px) { 
+    #th_header1, 
+    #th_header2,
+    #th_header3,
+    #th_header4,
+    #th_header5{
+      font-size: 1.2em;
     }
+
+    #headerTr{
+        height:5vh;
+        align-items: center;
+    }
+    .login{
+        width:100%;
+        height:auto;
+    }
+    #th_header6{
+        height: 2vh;
+    }
+    .title{
+        height:10vh;
+    }
+    .ShopNewShopWomenShopMen{
+        height: 32.6vh;
+    }
+    #img1{
+        width: 22vw;
+        height:20vh;
+    }
+    .productclass{
+        height:auto;
+    }
+
+    #boxfortitlesndprice{
+        height:3vh;
+        }
+  .sale{
+        height:46vh;
+        }
+    #sale{
+        height: 46vh;
+    }
+    #textaboutsale{
+        height: 43vh;
+    }
+    #getoff{
+    height:10vh;
+    }
+    #topshop,
+    #shop,
+    #ourstore,
+    #TermsConditions{
+        height: 15vh;
+        justify-content: space-between;
+}
+
+
+#footer2-1{
+    height: 6vh;
+}
+
+#footer2-2{
+    height: 6vh;
+}
+
+
+#footer2{
+    height: 6vh;
+    }
+
+}
