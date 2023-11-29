@@ -927,6 +927,7 @@ if(arrow){
 
         toggleArrow();
 
+        toggleArrow();
 
       
     }
