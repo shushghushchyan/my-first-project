@@ -66,7 +66,7 @@ const productData = [
         price: 10.00,
         quantity: 1 ,
         info:"Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.",
-        descript:"Lorem ipsum dolor sit ametLorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ullam..",
+        descript:"Lorem ipsum dolor sit ametLorem ullam..",
         sku:"0006",
         tag: ["home","men"],
         url: "https://static.wixstatic.com/media/c837a6_0ab9ff5bbc6f41a5b2dffae389cfb2b7~mv2.jpg/v1/fill/w_520,h_593,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_944cb31b5c7d4659b7a0c6612b4df573~mv2.jpg",
@@ -115,7 +115,7 @@ const productData = [
         price: 9.00,
         quantity: 1 ,       
         info:"Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.",
-        descript:"Lorem ipsum dolor sit ametLorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ullam..",
+        descript:"Lorem ipsum dolor sit ametLor ullam..",
         sku:"0010",
         tag: ["home","men"],
         url: "https://static.wixstatic.com/media/c837a6_8ea5cc0a06664ef6a3c1cf64e1cb5a27~mv2.jpg/v1/fill/w_520,h_593,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/c837a6_944cb31b5c7d4659b7a0c6612b4df573~mv2.jpg",
@@ -411,10 +411,13 @@ addToCart.addEventListener("click", () => {
         console.log('storageIndex: ', storageIndex);
         basketPoint.innerHTML = storage.length;
         basketPoint.style.color = "white";
+        basketPoint.style.fontSize = "0.6em"
         localStorage.setItem("cart", JSON.stringify(cart));
 
        basketPointSecond.innerHTML = storage.length;
        basketPointSecond.style.color = "white";
+       basketPoint.style.fontSize = "0.6em"
+
         localStorage.setItem("cart", JSON.stringify(cart));
 
 
@@ -470,6 +473,7 @@ addToCart.addEventListener("click", () => {
         plus.setAttribute("class", "plus btnplusminus");
         plus.innerHTML = "+";
         plus.addEventListener("click", () => {
+            
             const currentValue = parseInt(selectNumber.value);
             selectNumber.value = currentValue + 1;
             const plusproduct = cart.find(plusproduct => plusproduct.id === storageIndex.id);
@@ -560,6 +564,13 @@ if (plusproduct) {
 
        
     });
+    if(window.innerWidth < 360){
+        window.location.href = "viewcart.html"
+        basketPointSecond.innerHTML = storage.length;
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+
+    }
 });
 }
 
@@ -569,7 +580,7 @@ const basketPoint = document.getElementById("basketPoint");
 const basketPointSecond = document.getElementById("basketPointSecond");
 btnViewCart.addEventListener("click", function () {
 
-basketPoint.innerHTML = storage.length;
+basketPoint.innerHTML = cart.length;
 basketPoint.style.color = "white";
 });
 
@@ -593,8 +604,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // Предполагаем, что storedCartData - это массив
         basketPoint.innerText = storedCartData.length;
         basketPoint.style.color = "white";
+        basketPoint.style.fontSize = "0.6em"
+
         basketPointSecond.innerText = storedCartData.length;
         basketPointSecond.style.color = "white";
+        basketPointSecond.style.fontSize = "0.8em";
+        basketPointSecond.style.textAlign = "center";
+
     }
 });
 
@@ -659,7 +675,7 @@ cart.forEach((element) => {
     plusminus.appendChild(plus);
     plus.addEventListener("click", () => {
     const pluselement = cart.find(item => item.id === element.id);
-
+ 
     if (pluselement && pluselement.quantity >=0) {
         pluselement.quantity += 1;
 
@@ -676,6 +692,7 @@ cart.forEach((element) => {
         console.log("total", sumsumik);
         lastsubPrice.innerHTML = `(${sumsumik}$)`;
         totalsumik.innerHTML = `(${sumsumik}$)`;
+        basketPointSecond.innerText = storedCartData.length;
 
 
         localStorage.setItem("cart", JSON.stringify(cart));
@@ -683,6 +700,9 @@ cart.forEach((element) => {
         console.log("Product not found in the cart or quantity is already 0.");
     }
 });
+const lastsubPrice = document.getElementById("lastsubPrice")
+const totalsumik = document.getElementById("totalprice");
+totalsumik.innerHTML = lastsubPrice.innerHTML ;
 
     const selectNumber = document.createElement("input");
     selectNumber.setAttribute("id", "selectNumber"); 
@@ -714,7 +734,9 @@ minus.addEventListener("click", () => {
         const sumsumik = cart.reduce((accumulator, item) => {
             return accumulator + calculateBazmapatkum(item);
         }, 0);
-
+        const lastsubPrice = document.getElementById("lastsubPrice")
+const totalsumik = document.getElementById("totalprice");
+totalsumik.innerHTML = lastsubPrice.innerHTML ;
         console.log("total", sumsumik);
 
         lastsubPrice.innerHTML = `(${sumsumik}$)`;
@@ -741,13 +763,16 @@ minus.addEventListener("click", () => {
     viewcartclose.addEventListener("click", () => {
         myCartProduct.style.display = "none";
         
-    
+        const lastsubPrice = document.getElementById("lastsubPrice")
+        const totalsumik = document.getElementById("totalprice");
+        totalsumik.innerHTML = lastsubPrice.innerHTML ;
         const slicethisindex = cart.findIndex(item => item.id === element.id);
     
         if (slicethisindex !== -1) {
             cart.splice(slicethisindex, 1);
             localStorage.setItem("cart", JSON.stringify(cart));
             basketPoint.innerHTML = cart.length;
+            basketPointSecond.innerHTML = cart.length;
 
             const sumsumik = cart.reduce((accumulator, item) => {
                 return accumulator + calculateBazmapatkum(item);
@@ -807,27 +832,34 @@ document.addEventListener('DOMContentLoaded', function() {
     if (storedCartData) {
         // Предполагаем, что storedCartData - это массив
         basketPoint.innerText = storedCartData.length;
+        basketPointSecond.innerText = storedCartData.length;
+        basketPointSecond.style.color = "white";
+
         basketPoint.style.color = "white";
+        basketPoint.style.fontSize = "0.6em"
+
     }
 });
 
 
 
-const baskets = document.getElementsByClassName("basket");
-
+const baskets = document.querySelectorAll('.basket, .basket2');
 for (const basket of baskets) {
-    basket.addEventListener("click", () => {
-        window.location.href = "viewcart.html";
-        basketPoint.innerHTML = cart.length;
-
+    basket.addEventListener('click', () => {
+        if (window.innerWidth <= 280) {
+            window.location.href = 'viewcart.html';
+           
+        } else {
+            window.location.href = 'viewcart.html';
+            basketPoint.innerHTML = cart.length;
+        }
     });
 }
-    
 
 
 const burger = document.getElementById("burger");
 const modalWindowforBurger = document.getElementById("modalWindowforBurger");
-
+const basketsecond = document.getElementById
 let modalVisible = false;
 
 if (burger && modalWindowforBurger) {
@@ -843,25 +875,58 @@ if (burger && modalWindowforBurger) {
                 modalWindowforBurger.style.display = "flex";
                 modalWindowforBurger.style.flexDirection = "column";
                 modalWindowforBurger.style.width = "280px";
-                modalWindowforBurger.style.height = "350px";
+                modalWindowforBurger.style.height = "85vh";
                 modalWindowforBurger.style.justifyContent = "space-between";
                 modalWindowforBurger.style.alignItems = "center";
                 modalWindowforBurger.style.fontSize = "2.2em"
             }
 
             modalVisible = !modalVisible;
+
+            const arrow = document.getElementById("arrow");
+            if (window.inn){
+
+            }
         }
     });
 }
-
-
-
-
-
-
-
-
-
+if(window.location.href.split("/")[7] === 'viewcart.html')
+{
 const lastsubPrice = document.getElementById("lastsubPrice")
 const totalsumik = document.getElementById("totalprice");
 totalsumik.innerHTML = lastsubPrice.innerHTML ;
+}
+
+console.log();
+
+const arrow = document.getElementById("arrow");
+
+if(arrow){
+        function toggleArrow() {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                arrow.style.display = "block";
+            } else {
+                arrow.style.display = "none";
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth" // Optional: Add smooth scrolling behavior
+            });
+        }
+
+        window.onscroll = function() {
+            toggleArrow();
+        };
+
+        arrow.addEventListener("click", function() {
+            scrollToTop();
+        });
+
+        toggleArrow();
+
+
+      
+    }

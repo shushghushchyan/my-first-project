@@ -1,6 +1,7 @@
 *{
     margin:0;
     padding: 0;
+    font-family: 'Rubik', sans-serif;
 }
 *body{
     display: flex;
@@ -164,21 +165,19 @@ tr > th{
     margin-right:11.5vw;
     font-size:1em;
 }
- .selectedProduct {
+ #selectedProduct {
     width: 100%;
-    height: 40vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
+    height: 60vh;
     overflow-y: auto;
 
   } 
 
 #subtotalPrice{
 display: flex;
+justify-content: center;
+align-items:center;
 width: 100%;
-height:auto;
+height:10vh;
 }
 
 /* #viewcartdiv{
@@ -225,13 +224,12 @@ height:auto;
     display: flex;
     flex-direction: column;
     position: fixed;
-    top:51px;
+    top:0;
     display: flex;
     width:28vw;
-    height:95%;
+    height:100%;
     background: rgb(253, 253, 253);
     transition:  1s;
-    overflow-y: scroll;
     z-index: 2;
 }
 
@@ -320,6 +318,7 @@ height:auto;
     background-color: rgb(244, 71, 71);
     margin: -52px 14px 8px 68px;
     z-index: 2;
+    font-size: 1em;
 }
 
 @media (min-width: 330px){
@@ -351,6 +350,12 @@ width:50%;
 height:12;
 font-size:1.3em;
 }
+#arrow{
+    position: fixed;
+    font-size:4em;
+    top: 550px;
+    right: 40px;
+}
 #basket{
 width:15%;
 font-size:2em;
@@ -370,6 +375,7 @@ font-size:2em;
     font-size:2em;
   
 }
+
 .title{
     width: 100%;
     height:20vh;
@@ -615,7 +621,6 @@ align-items: center;
     display:flex;
     width:100%;
     height:25vh;
-    align-items: center;
     justify-content: space-between;
 }
 #aj{
@@ -640,10 +645,14 @@ align-items: center;
   #imgproduct{
     display:flex;
     flex-direction: column;
-    width:100%;
-    height: 80vh;
+    width:76%;
+    height: 50vh;
     align-items: center;
     background-size: cover;
+}
+#aboutproduct{
+    width: 90%;
+
 }
 #description{
     width:100%;
@@ -670,4 +679,120 @@ align-items: center;
 #transparent{
     display: none;
 }
+#imgproduct{
+    display: flex;
+    width:70%;
+    height:39vh;
+    align-items: center;
+    justify-content: center;
+}
+#verevidiv{
+    width:100%;
+    height:10vh;
+}
+#litleimg{
+    display:none;
+}
+
+}
+@media(max-width: 1024px) and (min-width:321px) { 
+    #th_header1, 
+    #th_header2,
+    #th_header3,
+    #th_header4,
+    #th_header5{
+      font-size: 1.2em;
     }
+
+    #headerTr{
+        height:5vh;
+        align-items: center;
+    }
+    .login{
+        width:100%;
+        height:auto;
+    }
+    #th_header6{
+        height: 2vh;
+    }
+
+    #topshop,
+    #shop,
+    #ourstore,
+    #TermsConditions{
+        height: 15vh;
+        justify-content: space-between;
+}
+#verevidiv{
+    height: 10vh;
+}
+#footer2-1{
+    height: 6vh;
+}
+
+#footer2-2{
+    height: 6vh;
+}
+
+#description{
+    margin-top:5vh;
+    height: 10vh;
+}
+#footer2{
+    height: 6vh;
+    }
+
+#imgproduct{
+
+width:43%;
+height: 87vh;
+      
+}
+#aboutproduct{
+height: 60vh;
+}
+#img {
+height: 30%;
+}
+#numbers{
+    width: 15vw;
+    height: 4vh;
+    font-size: 2em;
+}
+#litleimg{
+    display: none;
+}
+#return{
+height: 2%;
+
+}
+#addtocart{
+    height: 4vh;
+}
+#aboutproduct{
+    display:flex;
+    width:40%;
+    height:50vh;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: space-around;
+    margin: 0 0 0 2vw;
+}
+#nerqevidiv2{
+    display:flex;
+    width:70%;
+    height:60vh;
+}
+#cartSidebar{
+    width:30%;
+    height:45%;
+}
+#cart{
+    height: 35%;
+}
+
+.scrollOneProduct{
+    width: 100%;
+    height: 7vh;
+}
+}

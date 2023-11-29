@@ -1,6 +1,7 @@
 *{
     margin:0;
     padding: 0;
+    font-family: 'Rubik', sans-serif;
 }
 *body{
     display: flex;
@@ -251,14 +252,14 @@ tr > th{
 font-size: 1.5em;
 }
 #modalwondow {
-    width: 45vw;
-    height: 55vh;
+    width: 40vw;
+    height: 50vh;
     background: rgb(252, 253, 250);
     border-radius: 10%;
     border-style: dashed;
     color: rgb(19, 19, 17);
     position: fixed;
-    top: 0;
+    top: 30vh;
     left: 25vw;
     font-size: 2em;
     display: none;
@@ -300,4 +301,189 @@ font-size: 1.5em;
     background-color: rgb(244, 71, 71);
     margin: -52px 14px 8px 68px;
     z-index: 2;
+}
+@media (min-width: 330px){
+ #galaxyfoldheader{
+        display:none;
+    }
+}
+
+@media(max-width: 320px){ 
+    table{
+        display: none;
+  }
+  #galaxyfoldheader{
+    display: flex;
+    width:100%;
+    height:12vh;
+    background: yellow;
+    justify-content: space-around;
+    align-items: center;
+}
+#containerforviewcart{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height:auto;
+    align-items: center;
+    justify-content: center;
+}
+  #founderdiv{
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    margin-bottom: 5vh;
+  }
+  #viewcartleft{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+  #myCartProduct{
+    display: flex;
+    width: 100%;
+    height: 16.5vh;
+    border-bottom: 1px solid black;
+}
+#mycart{
+    width:100%;
+    height:8vh;
+    justify-content: center;
+    align-items: center;
+    font-size:2em;
+    border-bottom: 1px solid black;
+    padding: 1vw;
+}
+#imgviewcart{
+    display: flex;
+    width: 40%;
+    height:12vh;
+    margin:1.3vw 0 1vw 1vw;
+    justify-content: center;
+    background-size: cover;
+}
+#viewcartQuantity{
+    width: 25%;
+}
+#selectNumber{
+    width:6vw;
+    height: auto;
+    border: none;
+}
+#plusminus{
+    width:22vw;
+    height:10vw;
+}
+.btnplusminus{
+    border: none;
+    background: none;
+
+}
+#viewcartright{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width:100%;
+    height:auto;
+    margin-left: 10vw;
+    margin-top: 5vh;
+}
+
+#checkout{
+    display: flex;
+    width: 40vw;
+    height:5vh;
+    background: rgb(137, 208, 15);
+    color:black;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1em;
+    border-style:dashed;
+    border-radius: 10%;
+    margin-top: 5vh;
+    font-weight:bolder;
+    border:1px solid black;
+}
+#modalwondow {
+    width: 50vw;
+    height:15vh;
+    font-size: 1em;
+    line-height: 5vh;
+    top:205px;
+}
+}
+
+@media(max-width: 1024px) and (min-width:321px) { 
+    #th_header1, 
+    #th_header2,
+    #th_header3,
+    #th_header4,
+    #th_header5{
+      font-size: 1.2em;
+    }
+
+    #headerTr{
+        height:5vh;
+        align-items: center;
+    }
+    .login{
+        width:100%;
+        height:auto;
+    }
+    #th_header6{
+        height: 2vh;
+    }
+
+    #topshop,
+    #shop,
+    #ourstore,
+    #TermsConditions{
+        height: 15vh;
+        justify-content: space-between;
+}
+#verevidiv{
+    height: 10vh;
+}
+#footer2-1{
+    height: 6vh;
+}
+
+#footer2-2{
+    height: 6vh;
+}
+
+
+#footer2{
+    height: 6vh;
+    }
+
+#containerforviewcart{
+    height: 50vh;
+}
+#founderdiv{
+    height: 40vh;
+}
+#myCartProduct{
+    height:10vh;
+}
+#viewcartleft{
+    width: 80%;
+    height: 40vh;
+}
+#viewcartright{
+    width:40%;
+    height:40vh;
+    margin-left: 10vw;
+}
+#checkout{
+    width:20vh;
+    height: auto;
+    border-radius: 1%;
+}
+#modalwondow{
+    width: 30vh;
+    height: 20vh;
+}
 }
